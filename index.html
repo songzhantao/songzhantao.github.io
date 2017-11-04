@@ -1,2 +1,71 @@
-songzhantao.github.io
-sorry
+<!DOCTYPE HTML>
+<html>
+<head></head>
+<style type="text/css">
+
+
+</style>
+<body>
+<canvas id="canvas" width="1000" height="600">您的浏览器不支持Canvas</canvas>
+<script type="text/javascript">
+    var canvas = document.getElementById("canvas");
+    //alert(canvas);
+    var ctx = canvas.getContext("2d");
+    ctx.lineCap = 'round';
+    //ctx.strokeStyle="#663300";
+    //ctx.strokeStyle="#663300";
+
+    //定义初始化参数
+    var x = 500;//开始坐标
+    var y = 600;//开始坐标
+    var l = 80;//线的长度
+    var a = Math.PI / 2;//初始化角度
+    var d = 1; //初始化深度
+    var bw = 12;//分支的线的粗度
+    var bn = 1;//分支数量
+    var maxAngle = Math.PI / 2;
+
+    function randomAngel(angle) {
+        return angle + Math.random() * maxAngle - maxAngle * 0.5;
+    }
+
+    function drawTree(startX, startY, length, angel, depth, branchWidth) {
+        ctx.beginPath();
+        if (depth >= 14) {
+            ctx.strokeStyle = "green";
+        }
+        ctx.lineWidth = branchWidth;
+        ctx.moveTo(startX, startY);
+        var endX = startX - Math.cos(angel) * length;//余弦=林边与斜边的比值  =X轴的长度
+        var endY = startY - Math.sin(angel) * length;// 正铉=对边于斜边的比值=  Y轴的长度
+        ctx.lineTo(endX, endY);
+        ctx.stroke();
+        ctx.closePath();
+
+        //重新赋值
+        length = length * (0.7 + Math.random() * 0.3); //长度不固定 有的长 有的短
+        ++depth;
+        branchWidth *= 0.7;
+        if (depth <= 15) {
+            window.setTimeout(function () {
+                drawTree(endX, endY, length, randomAngel(angel), depth, branchWidth);
+                drawTree(endX, endY, length, randomAngel(angel), depth, branchWidth);
+            }, 500);
+
+
+        }
+
+    }
+
+    //調用
+    drawTree(x, y, l, a, d, bw);
+</script>
+
+</body>
+
+
+<br/>
+<br/>
+<br/>
+<br/><br/><br/><br/><br/>
+</html>
