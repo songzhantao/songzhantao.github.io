@@ -1,0 +1,51 @@
+.table-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items:flex-start;
+  height: 100vh;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 900px;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 15px;
+  text-align: center;
+}
+
+table thead {
+  background-color: #6699CC; /* 更改为淡蓝色 */
+  color: white;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.view-btn, .delete-btn {
+  padding: 5px 10px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.view-btn {
+  background-color: #17a2b8;
+}
+
+.delete-btn {
+  background-color: #B22222;  /* 更改为红黑色 */ /* 更改为暖色调的红色 */
+  color: white;
+}
